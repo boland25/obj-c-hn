@@ -20,7 +20,8 @@ Open .xcworkspace and hit build, and watch the magic happen.  Will need XCode 5 
 
 
 
-###List of still need to do
-- implement the pull to refresh
-- implement the label tap out to outside link
+###List of still need to do for future versions
+- add css to the comments to make them larger and easier to read
+- on link to article to read, make that open in a UIWebView
+- implement paging for infinite scroll
 
