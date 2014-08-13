@@ -18,6 +18,9 @@ that will install the missing frameworks and allow the project to be built.
 
 Open .xcworkspace and hit build, and watch the magic happen.  Will need XCode 5 and run on an OS running 7.0 or later
 
+###Changes
+I decided to pull in all the articles at once, as the xml is loaded all at once.  I figured I would display them all at once.  In the future it might be nice to have a load a few at a time, but I didn't get around to that.
+
 
 
 ###List of still need to do for future versions
