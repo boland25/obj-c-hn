@@ -23,8 +23,6 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	[self layoutDetails];
-
-	// Do any additional setup after loading the view.
 }
 
 #pragma mark Private methods
@@ -90,6 +88,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	//TODO: css style could be applied here in a future release
 
+	//NOTE: wasn't sure how to deal with the comments section as it doesn't fit without re-sizing it, this is a temp solution
 	[self resizeHTMLViewToFit];
 	[self hideActivityIndicator];
 }

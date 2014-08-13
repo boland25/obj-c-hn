@@ -31,7 +31,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	//NOTE: this is so that it will reload itself everytime  the view is on screen
+	//NOTE: this is so that it will reload itself everytime this view is on screen
 	[self getFeeds];
 }
 

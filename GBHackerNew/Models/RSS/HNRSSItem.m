@@ -10,11 +10,11 @@
 
 @implementation HNRSSItem
 
-//+ (NSDictionary *)JSONKeyPathsByPropertyKey {
-//	return @{ @"title":@"title",
-//			  @"link":@"link",
-//			  @"comments":@"comments",
-//			  @"hnDescription":@"description" };
-//}
++ (NSDictionary *)JSONKeyPathsByPropertyKey {
+	return @{ @"title":@"title",
+			  @"link":@"link",
+			  @"comments":@"comments",
+			  @"hnDescription":@"description" };
+}
 
 @end
