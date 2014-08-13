@@ -9,6 +9,8 @@
 #import "HNNetworking.h"
 #import "HNConstants.h"
 #import "NSDictionary+NilValue.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "AFUrlResponseSerialization.h"
 
 @interface HNNetworking ()
 
@@ -68,6 +70,23 @@
 
 	return request;
 }
+
+- (void)requestWithAbsolutePath:(NSString *)absolutePath method:(HNRequestHandlerMethod)method params:(NSDictionary *)params success:(void (^)(id responseObject))success failure:(void (^)(HNError *error))failure {
+	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+
+	manager.responseSerializer = [AFHTTPResponseSerializer serializer];
+	[manager GET:absolutePath parameters:params success: ^(AFHTTPRequestOperation *operation, id responseObject) {
+	    if (success) {
+	        success(responseObject);
+		}
+	} failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
+	    if (failure) {
+	        failure([self createErrorModelFromResponse:nil error:error]);
+		}
+	}];
+}
+
+#pragma mark Private methods
 
 - (NSString *)requestMethodString:(HNRequestHandlerMethod)method {
 	switch (method) {

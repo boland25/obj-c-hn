@@ -21,7 +21,6 @@ Open .xcworkspace and hit build, and watch the magic happen.  Will need XCode 5 
 
 
 ###List of still need to do
-- implement the loading indicator
 - implement the pull to refresh
 - implement the label tap out to outside link
 

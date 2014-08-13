@@ -7,7 +7,7 @@
 //
 
 #import "HNViewController.h"
-//#import <SVProgressHUD/SVProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 @implementation HNViewController
 
@@ -16,14 +16,12 @@
 	[alert show];
 }
 
-- (void)showActivityIndicator
-{
-  //  [SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
+- (void)showActivityIndicator {
+	[SVProgressHUD showWithMaskType:SVProgressHUDMaskTypeGradient];
 }
 
-- (void)hideActivityIndicator
-{
-   // [SVProgressHUD dismiss];
+- (void)hideActivityIndicator {
+	[SVProgressHUD dismiss];
 }
 
 @end

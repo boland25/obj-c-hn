@@ -41,6 +41,15 @@
 	}];
 }
 
+- (void)getComments:(NSString *)commentPath success:(void (^)(NSString *htmlString))success failure:(void (^)(HNError *error))failure {
+	HNNetworking *networking = [HNNetworking new];
+	[networking requestWithAbsolutePath:commentPath method:HNRequestMethodGET params:nil success: ^(id responseObject) {
+	    if (success) {
+	        success([[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding]);
+		}
+	} failure:failure];
+}
+
 - (HNXMLParserDelegate *)getXMLParserDelegate {
 	if (!self.xmlParserDelegate) {
 		self.xmlParserDelegate = [HNXMLParserDelegate new];

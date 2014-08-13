@@ -15,4 +15,6 @@
 
 - (void)getFeeds:(void (^)(NSArray *feeds))success failure:(void (^)(HNError *error))failure;
 
+- (void)getComments:(NSString *)commentPath success:(void (^)(NSString *htmlString))success failure:(void (^)(HNError *error))failure;
+
 @end

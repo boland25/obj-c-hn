@@ -20,22 +20,19 @@ PODS:
   - AFNetworking/UIKit (2.3.1):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - HockeySDK (3.5.6)
   - Mantle (1.4.1):
     - Mantle/extobjc
   - Mantle/extobjc (1.4.1)
-  - Shimmer (1.0.1)
+  - SVProgressHUD (HEAD based on 1.0)
 
 DEPENDENCIES:
   - AFNetworking
-  - HockeySDK
   - Mantle (= 1.4.1)
-  - Shimmer
+  - SVProgressHUD (HEAD)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
-  HockeySDK: 27d8b411208f9d3f70c8f6695a8defa2a3465721
   Mantle: 1ca9c0fa84d3d3fc98524e7229f30489b6dd44e5
-  Shimmer: 35aa2a57b8fbc17f9e16706021665966fd93dbd1
+  SVProgressHUD: 5034c6e22b8c2ca3e09402e48d41ed0340aa1c50
 
 COCOAPODS: 0.33.1

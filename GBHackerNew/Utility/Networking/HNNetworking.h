@@ -27,5 +27,5 @@ typedef NS_ENUM (NSInteger, HNRequestHandlerMethod)
 
 + (void)requestWithEndpoint:(NSString *)endpoint method:(HNRequestHandlerMethod)method params:(NSDictionary *)params success:(void (^)(id responseObject))success failure:(void (^)(HNError *error))failure;
 
-
+- (void)requestWithAbsolutePath:(NSString *)absolutePath method:(HNRequestHandlerMethod)method params:(NSDictionary *)params success:(void (^)(id responseObject))success failure:(void (^)(HNError *error))failure;
 @end

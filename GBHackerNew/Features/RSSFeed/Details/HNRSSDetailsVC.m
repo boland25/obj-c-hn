@@ -7,8 +7,7 @@
 //
 
 #import "HNRSSDetailsVC.h"
-#import "AFHTTPRequestOperationManager.h"
-#import "AFUrlResponseSerialization.h"
+#import "HNDataController.h"
 
 @interface HNRSSDetailsVC () <UIWebViewDelegate>
 
@@ -38,13 +37,9 @@
 }
 
 - (void)setCommentsWithLink {
-	AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
-	manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-	[manager GET:self.detailItem.comments parameters:nil success: ^(AFHTTPRequestOperation *operation, id responseObject) {
-	    NSString *htmlString = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-	    [self.commentView loadHTMLString:htmlString baseURL:nil];
-	} failure: ^(AFHTTPRequestOperation *operation, NSError *error) {
-	    // Fail silently
+	[[HNDataController sharedData] getComments:self.detailItem.comments success: ^(NSString *htmlString) {
+	    [self loadHTML:htmlString];
+	} failure: ^(HNError *error) {
 	    [self hideActivityIndicator];
 	}];
 	[self showActivityIndicator];
@@ -69,8 +64,24 @@
 	return attString;
 }
 
+- (void)loadHTML:(NSString *)htmlString {
+	[self.commentView loadHTMLString:htmlString baseURL:nil];
+}
+
+- (void)resizeHTMLViewToFit {
+	CGSize contentSize = self.commentView.scrollView.contentSize;
+	CGSize viewSize = self.view.bounds.size;
+
+	float rw = viewSize.width / contentSize.width;
+
+	self.commentView.scrollView.minimumZoomScale = rw;
+	self.commentView.scrollView.maximumZoomScale = rw;
+	self.commentView.scrollView.zoomScale = rw;
+}
+
+#pragma mark - UILabel Actions
+
 - (void)handleOnLabelWasTapped:(UIGestureRecognizer *)gesture {
-	NSLog(@"gesture is tapped");
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.detailItem.link]];
 }
 
@@ -78,6 +89,8 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	//TODO: css style could be applied here in a future release
+
+	[self resizeHTMLViewToFit];
 	[self hideActivityIndicator];
 }
 
